@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <video class="video-background" autoplay loop muted>
+        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="glass-container">
+        <h1 class="neon-text">AI Image Generator</h1>
+        <form id="image-form">
+            <input type="text" name="prompt" id="prompt" placeholder="Enter your prompt..." required>
+            <button type="submit">Generate</button>
+        </form>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Generating image... Please wait.</p>
+        </div>
+
+        <div class="saved-prompts">
+            <h2>Saved Prompts</h2>
+            <ul id="prompt-list" class="prompt-list"></ul>
+            <button class="remove-all-btn" onclick="removeAllPrompts()">Remove All Prompts</button>
+        </div>
+    </div>
+
+    <div id="image-modal">
+        <button class="close-btn" onclick="closeImage()">&times;</button>
+        <img id="generated-image" src="" alt="Generated Image">
+        <div id="prompt-text"></div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #2E3192, #1BFFFF);
+    overflow: hidden;
+}
+
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* Glass Container */
+.glass-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin-top: 50px;
+    animation: fadeIn 1.5s ease-in-out;
+    max-width: 500px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Neon Text */
+.neon-text {
+    font-size: 25px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px #1BFFFF, 0 0 20px #00BFFF, 0 0 40px #007BFF, 0 0 60px #0044FF;
+    animation: glowEffect 2s infinite alternate;
+}
+
+@keyframes glowEffect {
+    0% { text-shadow: 0 0 10px #1BFFFF, 0 0 30px #00BFFF, 0 0 50px #007BFF; }
+    100% { text-shadow: 0 0 20px #00FFFF, 0 0 50px #00BFFF, 0 0 80px #007BFF; }
+}
+
+/* Input and Button Styles */
+input, button {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+input {
+    width: 70%;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #ddd;
+}
+
+button {
+    background: linear-gradient(45deg, #FF416C, #FF4B2B);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #1BFFFF, #007BFF);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+/* Saved Prompts Section */
+.saved-prompts {
+    margin-top: 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.saved-prompts h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #00BFFF;
+}
+
+.prompt-list {
+    list-style: none;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.prompt-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    text-align: left;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prompt-list li:hover {
+    background: rgba(0, 255, 255, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.prompt-list li .close-prompt-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.prompt-list li .close-prompt-btn:hover {
+    background: darkred;
+}
+
+/* Image Modal */
+#image-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    animation: fadeIn 0.5s;
+}
+
+#generated-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.close-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #00BFFF;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#loading p {
+    color: #00BFFF;
+    margin-top: 10px;
+}
+
+/* Prompt Text */
+#prompt-text {
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Remove All Button */
+.remove-all-btn {
+    background: linear-gradient(45deg, #FF416C, #FF4B2B);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.remove-all-btn:hover {
+    background: linear-gradient(45deg, #1BFFFF, #007BFF);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
